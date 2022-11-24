@@ -2,19 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_zoom_drawer/config.dart';
 import 'package:flutter_zoom_drawer/flutter_zoom_drawer.dart';
 import 'package:get/get.dart';
-import 'package:study_app/configs/custom_text_styles.dart';
+import 'package:study_app/configs/themes/custom_text_styles.dart';
 import 'package:study_app/configs/themes/app_colors.dart';
 import 'package:study_app/configs/themes/app_icons.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
-import 'package:study_app/configs/themes/zoom_drawer_controller.dart';
+import 'package:study_app/controllers/zoom_drawer_controller.dart';
 import 'package:study_app/controllers/question_paper/question_paper_controller.dart';
-import 'package:study_app/screens/home/widgets/menu_drawer.dart';
-import 'package:study_app/screens/home/widgets/question_card.dart';
+import 'package:study_app/screens/home/components/menu_drawer.dart';
+import 'package:study_app/screens/home/components/question_card.dart';
 import 'package:study_app/widgets/app_circle.dart';
 import 'package:study_app/widgets/content_area.dart';
 
 class HomeScreen extends GetView<MyZoomDrawerContoller> {
   const HomeScreen({super.key});
+
+static final routeName = 'home';
 
   @override
   Widget build(BuildContext context) {
