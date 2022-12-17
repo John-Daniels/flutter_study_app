@@ -19,6 +19,7 @@ class LightTheme with SubThemeData {
         bodyColor: mainTextColorLight,
         displayColor: mainTextColorLight,
       ),
+      useMaterial3: true,
     );
   }
 }

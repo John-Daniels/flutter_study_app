@@ -1,6 +1,8 @@
 # study_app
 
-A new Flutter project.
+## An e-learning app built with flutter & firebase
+
+![screenshot](./showcase/screenshot1.png)
 
 ## Getting Started
 

@@ -4,6 +4,7 @@ import 'package:study_app/configs/logger/app_logger.dart';
 import 'package:study_app/controllers/auth_controller.dart';
 import 'package:study_app/firebase_ref/references.dart';
 import 'package:study_app/models/question_paper_model.dart';
+import 'package:study_app/screens/questions/questions_screen.dart';
 import 'package:study_app/services/firebase_storage_services.dart';
 
 class QuestionPaperController extends GetxController {
@@ -51,9 +52,10 @@ class QuestionPaperController extends GetxController {
     if (authController.isLoggedIn()) {
       if (tryAgain) {
         Get.back();
-      } else {}
+      } else {
+        Get.toNamed(QuestionScreen.routeName, arguments: paper);
+      }
     } else {
-      print('the title is ${paper.title}');
       authController.showLoginAlertDialog();
     }
   }

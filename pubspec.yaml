@@ -48,6 +48,8 @@ dependencies:
   google_sign_in: ^5.4.2
   logger: ^1.1.0
   flutter_svg: ^1.1.5
+  shimmer: ^2.0.0
+  easy_separator: ^1.0.1
 
 dev_dependencies:
   flutter_test:
