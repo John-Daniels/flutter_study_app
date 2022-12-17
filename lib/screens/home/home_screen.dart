@@ -10,13 +10,14 @@ import 'package:study_app/controllers/zoom_drawer_controller.dart';
 import 'package:study_app/controllers/question_paper/question_paper_controller.dart';
 import 'package:study_app/screens/home/components/menu_drawer.dart';
 import 'package:study_app/screens/home/components/question_card.dart';
+import 'package:study_app/screens/home/components/question_skeleton.dart';
 import 'package:study_app/widgets/app_circle.dart';
 import 'package:study_app/widgets/content_area.dart';
 
 class HomeScreen extends GetView<MyZoomDrawerContoller> {
   const HomeScreen({super.key});
 
-static final routeName = 'home';
+  static final routeName = 'home';
 
   @override
   Widget build(BuildContext context) {
@@ -89,21 +90,34 @@ static final routeName = 'home';
                           addPadding: false,
                           child: Obx(
                             () {
-                              return ListView.separated(
-                                physics: const BouncingScrollPhysics(),
-                                padding: UIParameters.mobileScreenPadding,
-                                shrinkWrap: true,
-                                itemBuilder: (context, index) {
-                                  return QuestionCard(
-                                    model: questionPaperController
-                                        .allPapers[index],
-                                  );
-                                },
-                                separatorBuilder: (context, index) =>
-                                    const SizedBox(height: 20),
-                                itemCount:
-                                    questionPaperController.allPapers.length,
-                              );
+                              if (questionPaperController.allPapers.isEmpty)
+                                return ListView.separated(
+                                  physics: const BouncingScrollPhysics(),
+                                  padding: UIParameters.mobileScreenPadding,
+                                  shrinkWrap: true,
+                                  itemCount: 10,
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(height: 20),
+                                  itemBuilder: (context, index) {
+                                    return QuestionCardSkeleton();
+                                  },
+                                );
+                              else
+                                return ListView.separated(
+                                  physics: const BouncingScrollPhysics(),
+                                  padding: UIParameters.mobileScreenPadding,
+                                  shrinkWrap: true,
+                                  itemBuilder: (context, index) {
+                                    return QuestionCard(
+                                      model: questionPaperController
+                                          .allPapers[index],
+                                    );
+                                  },
+                                  separatorBuilder: (context, index) =>
+                                      const SizedBox(height: 20),
+                                  itemCount:
+                                      questionPaperController.allPapers.length,
+                                );
                             },
                           ),
                         ),
