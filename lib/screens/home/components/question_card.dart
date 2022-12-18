@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:study_app/configs/themes/custom_text_styles.dart';
 import 'package:study_app/configs/themes/app_icons.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
-import 'package:study_app/controllers/question_paper/question_paper_controller.dart';
+import 'package:study_app/controllers/questions/question_paper_controller.dart';
 import 'package:study_app/models/question_paper_model.dart';
 import 'package:study_app/widgets/app_icon_text.dart';
 

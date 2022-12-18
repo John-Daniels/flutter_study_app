@@ -15,10 +15,16 @@ class AppCircleButton extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       clipBehavior: Clip.none,
-      shape: const CircleBorder(),
       child: InkWell(
+        borderRadius: BorderRadius.circular(20),
         onTap: onTap,
-        child: child,
+        overlayColor: MaterialStatePropertyAll(
+          Theme.of(context).primaryColor.withOpacity(0.1),
+        ),
+        child: Ink(
+          padding: EdgeInsets.all(5),
+          child: child,
+        ),
       ),
     );
   }

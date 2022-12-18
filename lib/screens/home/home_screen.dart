@@ -7,7 +7,7 @@ import 'package:study_app/configs/themes/app_colors.dart';
 import 'package:study_app/configs/themes/app_icons.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/controllers/zoom_drawer_controller.dart';
-import 'package:study_app/controllers/question_paper/question_paper_controller.dart';
+import 'package:study_app/controllers/questions/question_paper_controller.dart';
 import 'package:study_app/screens/home/components/menu_drawer.dart';
 import 'package:study_app/screens/home/components/question_card.dart';
 import 'package:study_app/screens/home/components/question_skeleton.dart';

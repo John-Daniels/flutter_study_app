@@ -87,7 +87,7 @@ class QuestionCardSkeleton extends StatelessWidget {
         ),
       ),
       baseColor: Colors.white,
-      highlightColor: Colors.blueGrey.withOpacity(0.5),
+      highlightColor: Colors.blueGrey.withOpacity(0.3),
     );
   }
 }
