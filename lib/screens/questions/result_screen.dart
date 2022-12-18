@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:study_app/configs/themes/app_dark_theme.dart';
+import 'package:study_app/configs/themes/app_light_theme.dart';
 import 'package:study_app/configs/themes/custom_text_styles.dart';
 import 'package:study_app/configs/themes/ui_parameters.dart';
 import 'package:study_app/controllers/questions/question_controller.dart';
@@ -105,7 +107,7 @@ class ResultScreen extends GetView<QuestionController> {
                     Expanded(
                       child: MainButton(
                         onTap: controller.tryAgain,
-                        color: Colors.blueGrey,
+                        color: primaryColorLight.withOpacity(0.4),
                         title: 'Try again',
                       ),
                     ),
@@ -113,7 +115,7 @@ class ResultScreen extends GetView<QuestionController> {
                     Expanded(
                       child: MainButton(
                         onTap: controller.saveTestResults,
-                        color: Colors.blueGrey,
+                        color: primaryColorDark.withOpacity(0.4),
                         title: 'Go home',
                       ),
                     ),

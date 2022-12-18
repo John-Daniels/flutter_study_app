@@ -28,7 +28,6 @@ class QuestionController extends GetxController {
   @override
   void onReady() {
     final _questionPaper = Get.arguments as QuestionPaperModel;
-    print(_questionPaper.title);
 
     loadData(_questionPaper);
     super.onReady();
@@ -144,8 +143,10 @@ class QuestionController extends GetxController {
   }
 
   void tryAgain() {
+    // questionIndex.value = 0;
+    Get.offAllNamed(HomeScreen.routeName);
     Get.find<QuestionPaperController>()
-        .navigateToQuestions(paper: questionPaperModel, tryAgain: true);
+        .navigateToQuestions(paper: questionPaperModel, tryAgain: false);
   }
 
   void navigateToHome() {
