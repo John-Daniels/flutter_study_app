@@ -1,4 +1,4 @@
-# study_app
+# study_app [![Codemagic build status](https://api.codemagic.io/apps/639e777a8a3754ecd8732903/639e777a8a3754ecd8732902/status_badge.svg)](https://codemagic.io/apps/639e777a8a3754ecd8732903/639e777a8a3754ecd8732902/latest_build)
 
 ## An e-learning app built with flutter & firebase
 
