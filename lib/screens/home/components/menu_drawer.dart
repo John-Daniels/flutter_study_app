@@ -40,6 +40,7 @@ class MenuDrawer extends GetView<MyZoomDrawerContoller> {
                   right: MediaQuery.of(context).size.width * 0.3,
                 ),
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Obx(
                       () => controller.user.value == null
@@ -53,9 +54,7 @@ class MenuDrawer extends GetView<MyZoomDrawerContoller> {
                               ),
                             ),
                     ),
-                    const Spacer(
-                      flex: 1,
-                    ),
+                    Spacer(),
                     _DrawerButton(
                       icon: Icons.web,
                       label: 'website',
@@ -66,13 +65,17 @@ class MenuDrawer extends GetView<MyZoomDrawerContoller> {
                       label: 'email',
                       onPressed: () => controller.email(),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 25),
-                      child: _DrawerButton(
-                        icon: Icons.logout,
-                        label: 'logout',
-                        onPressed: () => controller.signOut(),
-                      ),
+                    Obx(
+                      () => controller.user.value == null
+                          ? Container()
+                          : Padding(
+                              padding: const EdgeInsets.only(left: 25),
+                              child: _DrawerButton(
+                                icon: Icons.logout,
+                                label: 'logout',
+                                onPressed: () => controller.signOut(),
+                              ),
+                            ),
                     )
                   ],
                 ),
