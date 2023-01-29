@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study_app/configs/themes/app_colors.dart';
+import 'package:study_app/controllers/auth_controller.dart';
 import 'package:study_app/widgets/app_circle.dart';
 
-class OnboardingScreen extends StatelessWidget {
-  const OnboardingScreen({super.key});
-
+class OnboardingScreen extends GetView<AuthController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,7 +24,7 @@ class OnboardingScreen extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               const Text(
-                'This is a study app. You can use it as you want. If you understand how it works, you would be able to scale it. With this you will master firebase backend and flutter frontend ',
+                'Welcome to the ultimate study app, where you can improve your knowledge in physics, chemistry, math, and biology with ease. With a comprehensive database of questions and answers, instant feedback, and progress tracking, you\'ll be able to master these subjects in no time',
                 textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 18,
@@ -34,7 +33,7 @@ class OnboardingScreen extends StatelessWidget {
               ),
               const SizedBox(height: 40),
               AppCircleButton(
-                onTap: () => Get.offAllNamed('/home'),
+                onTap: () => controller.navigateToHomePage(),
                 child: const Icon(
                   size: 35,
                   Icons.arrow_forward,

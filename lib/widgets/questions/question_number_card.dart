@@ -55,7 +55,7 @@ class QuestionNumberCard extends StatelessWidget {
             style: TextStyle(
               color: status == AnswerStatus.notanswered
                   ? Theme.of(context).primaryColor
-                  : null,
+                  : Colors.white,
             ),
           ),
         ),

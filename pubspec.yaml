@@ -50,6 +50,7 @@ dependencies:
   flutter_svg: ^1.1.5
   shimmer: ^2.0.0
   easy_separator: ^1.0.1
+  get_storage: ^2.0.3
 
 dev_dependencies:
   flutter_test:

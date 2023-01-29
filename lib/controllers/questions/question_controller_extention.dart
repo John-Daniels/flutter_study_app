@@ -15,11 +15,12 @@ extension QuestionsControllerExtension on QuestionController {
   }
 
   String get points {
-    var points = (correctQuestionsCount / allQuestions.length) *
-        100 *
-        (questionPaperModel.timeSeconds - remainSeconds) /
-        questionPaperModel.timeSeconds *
-        100;
+    var points = (correctQuestionsCount / allQuestions.length) * 100;
+
+    // *
+    // (questionPaperModel.timeSeconds - remainSeconds) /
+    // questionPaperModel.timeSeconds *
+    // 100;
 
     return points.toStringAsFixed(2);
   }
@@ -29,16 +30,17 @@ extension QuestionsControllerExtension on QuestionController {
     User? _user = Get.find<AuthController>().getUser();
     if (_user == null) return;
     batch.set(
-        userRF
-            .doc(_user.email)
-            .collection('recent_tests')
-            .doc(questionPaperModel.id),
-        {
-          "points": points,
-          "correct_answer": '$correctQuestionsCount / ${allQuestions.length}',
-          "questions_id": questionPaperModel.id,
-          'time': questionPaperModel.timeSeconds - remainSeconds
-        });
+      userRF
+          .doc(_user.email)
+          .collection('recent_tests')
+          .doc(questionPaperModel.id),
+      {
+        "points": points,
+        "correct_answers": '$correctQuestionsCount / ${allQuestions.length}',
+        "question_id": questionPaperModel.id,
+        'time': questionPaperModel.timeSeconds - remainSeconds
+      },
+    );
 
     batch.commit();
     navigateToHome();

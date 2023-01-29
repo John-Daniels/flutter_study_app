@@ -19,15 +19,15 @@ class AppRoutes {
         ),
         GetPage(
           name: '/onboarding',
-          page: () => const OnboardingScreen(),
+          page: () => OnboardingScreen(),
         ),
         GetPage(
           name: '/home',
           page: () => const HomeScreen(),
           binding: BindingsBuilder(
             () {
-              Get.put(QuestionPaperController());
-              Get.put(MyZoomDrawerContoller());
+              Get.put(QuestionPaperController(), permanent: true);
+              Get.put(MyZoomDrawerContoller(), permanent: true);
             },
           ),
         ),

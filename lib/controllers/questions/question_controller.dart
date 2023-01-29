@@ -123,7 +123,8 @@ class QuestionController extends GetxController {
     remainSeconds = seconds;
     _timer = Timer.periodic(duration, (timer) {
       if (remainSeconds == 0) {
-        timer.cancel();
+        // timer.cancel();
+        complete();
       } else {
         int minutes = remainSeconds ~/ 60;
         int seconds = remainSeconds % 60;
@@ -139,7 +140,7 @@ class QuestionController extends GetxController {
 
   void complete() {
     _timer!.cancel();
-    Get.offAndToNamed(ResultScreen.routeName);
+    Get.toNamed(ResultScreen.routeName);
   }
 
   void tryAgain() {
