@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:study_app/configs/themes/app_icons.dart';
 import 'package:study_app/configs/themes/custom_text_styles.dart';
@@ -49,12 +50,13 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 leading ??
                     Transform.translate(
                       offset: Offset(-14, 0),
-                      child: AppCircleButton(
-                        child: Icon(
+                      child: IconButton(
+                        padding: EdgeInsets.zero,
+                        icon: Icon(
                           CupertinoIcons.back,
                           size: 20,
                         ),
-                        onTap: () => Navigator.of(context).pop(),
+                        onPressed: () => Navigator.of(context).pop(),
                       ),
                     ),
                 if (showActionIcon)

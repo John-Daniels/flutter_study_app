@@ -45,23 +45,26 @@ class ReviewScreen extends GetView<QuestionController> {
                       builder: (_) {
                         return ListView.separated(
                           shrinkWrap: true,
-                          itemBuilder: (_, index) {
-                            final answer = controller
-                                .currentQuestion.value!.answers[index];
-                            final selectedAnswer = controller
-                                .currentQuestion.value!.selectedAnswer;
+                          padding: EdgeInsets.only(top: 25),
+                          itemBuilder: (__, index) {
+                            final answer =
+                                _.currentQuestion.value!.answers[index];
+                            final selectedAnswer =
+                                _.currentQuestion.value!.selectedAnswer;
                             final correctAnswer =
-                                controller.currentQuestion.value!.correctAnswer;
+                                _.currentQuestion.value!.correctAnswer;
                             final String answerText =
                                 '${answer.identifier}. ${answer.answer}';
 
                             if (correctAnswer == selectedAnswer &&
                                 answer.identifier == selectedAnswer) {
                               return CorrectAnswer(answer: answerText);
-                            } else if (selectedAnswer == null) {
-                              return NotAnswered(answer: answerText);
+                            } else if (selectedAnswer == null &&
+                                correctAnswer == answer.identifier) {
+                              return CorrectAnswer(answer: answerText);
                             } else if (correctAnswer != selectedAnswer &&
-                                answer.identifier == selectedAnswer) {
+                                    answer.identifier == selectedAnswer ||
+                                selectedAnswer == null) {
                               return WrongAnswer(answer: answerText);
                             } else if (correctAnswer == answer.identifier)
                               return CorrectAnswer(answer: answerText);

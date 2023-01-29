@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
+import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:study_app/configs/logger/app_logger.dart';
 import 'package:study_app/firebase_ref/references.dart';
@@ -14,19 +15,33 @@ class AuthController extends GetxController {
     super.onReady();
   }
 
+  GetStorage userBox = GetStorage();
+  get isFirstLauch => userBox.read('isFirstLaunch') ?? false;
+
   late FirebaseAuth _auth;
   // final _user = Rxn(User)
   final _user = Rxn<User>();
   late Stream<User?> _authStateChanges;
 
   void initAuth() async {
-    await Future.delayed(const Duration(seconds: 2));
     _auth = FirebaseAuth.instance;
     _authStateChanges = _auth.authStateChanges();
     _authStateChanges.listen((User? user) {
       _user.value = user;
     });
-    navigateToOnboarding();
+
+    await Future.delayed(const Duration(seconds: 2));
+
+    // GetStorage().read('my_data').then((data) {
+    //   if (data != null) {
+    //     myData = data;
+    //   }
+    // });
+
+    if (isFirstLauch)
+      navigateToOnboarding();
+    else
+      navigateToHomePage();
   }
 
   signinWithGoogle() async {
@@ -62,7 +77,8 @@ class AuthController extends GetxController {
     });
   }
 
-  void navigateToOnboarding() {
+  void navigateToOnboarding() async {
+    if (isFirstLauch) await userBox.write('isFirstLauch', true);
     Get.offAllNamed('/onboarding');
   }
 
